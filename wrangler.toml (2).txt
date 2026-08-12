@@ -1,0 +1,16 @@
+name = "d-invites-api"
+main = "paystack-verify.js"
+compatibility_date = "2026-08-01"
+
+# Route the worker onto a subdomain of your existing devtem.org zone.
+# This makes Cloudflare act as the "proxy" in front of your serverless logic —
+# GitHub Pages serves the static site, this Worker serves the one dynamic endpoint.
+routes = [
+  { pattern = "api.invites.devtem.org/*", zone_name = "devtem.org" }
+]
+
+# Secrets (set these with `wrangler secret put NAME` — never commit real values):
+#   wrangler secret put PAYSTACK_SEC_KEY
+#   wrangler secret put SUPABASE_URL
+#   wrangler secret put SUPABASE_SERVICE_KEY
+#   wrangler secret put BREVO_API_KEY
